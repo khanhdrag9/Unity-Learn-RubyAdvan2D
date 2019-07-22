@@ -5,10 +5,11 @@ using UnityEngine;
 public class RubyController : MonoBehaviour
 {
     public Vector2 speed;
+    Rigidbody2D rigidBody;
 
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -21,6 +22,7 @@ public class RubyController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float y = transform.position.y + speed.y * vertical * Time.deltaTime;
 
-        transform.position = new Vector2(x, y);
+        // transform.position = new Vector2(x, y);
+        rigidBody.MovePosition(new Vector2(x, y));
     }
 }
